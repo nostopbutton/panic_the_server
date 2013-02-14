@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/vendor/bootstrap-responsive.min.css">
+    <!-- TODO -  do I need normalize? -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Added by me -->
+    <link rel="stylesheet" type="text/css" href="css/theme.css"><!-- TODO - should extract footer-->
+    <!--<link rel="stylesheet" href="css/design.css" type="text/css" media="screen" />-->
+    <!-- JQuery UI used to create radio buttons-->
+    <link rel="stylesheet" href="css/vendor/smoothness/jquery-ui-1.10.0.custom.min.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Arimo|La+Belle+Aurore|Aclonica|Krona+One|Nothing+You+Could+Do|Arizonia|Dancing+Script' rel='stylesheet' type='text/css'>
+
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<div id="myModal" class="modal hide fade smallModal">
+    <form id="signup-form" action="/signup" method="post" class="form-horizontal">
+        <div class="modal-header"><a data-dismiss="modal"  class="close"></a>
+            <h3>Sign Up Today</h3></div>
+        <div class="modal-body">
+            <fieldset>
+                <div class="control-group">
+                    <input type="text" name="username" placeholder="Username" class="input-xlarge uname"/>
+                    <!--<span id="imagePlaceHolder"></span>-->
+                </div>
+                <div class="control-group">
+                    <input type="text" name="email" placeholder="Email" class="input-xlarge"/>
+                </div>
+                <div class="control-group">
+                    <input type="password" name="password" placeholder="Password" class="input-xlarge"/>
+                </div>
+            </fieldset>
+        </div>
+        <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn">Close</a>
+            <button class="btn btn-primary create-button" type="submit">Create Account</button>
+        </div>
+    </form>
+</div>
+<div id="loginModal" class="modal hide fade smallModal">
+    <form id="login-form" action="/login" method="post" class="form-horizontal">
+        <div class="modal-header">
+            <a data-dismiss="modal" class="close"></a>
+            <h3>Log In</h3>
+        </div>
+        <div class="modal-body">
+            <fieldset>
+                <div class="control-group">
+                    <input type="text" name="username" placeholder="Username" class="input-xlarge uname"/>
+                    <!--<span id="imagePlaceHolder"></span>-->
+                </div>
+                <div class="control-group">
+                    <input type="password" name="password" placeholder="Password" class="input-xlarge"/>
+                </div>
+            </fieldset>
+        </div>
+        <div class="modal-footer">
+            <a href="#" data-dismiss="modal" class="btn">Close</a>
+            <button class="btn btn-primary" type="submit">Log In</button>
+        </div>
+    </form>
+</div>
+
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class= "container">
+            <div class="pull-left">
+                <a class="logo" href="#">TEAL</a>
+                <!--<p class="logo">TEAL</p>-->
+            </div>
+            <div class="pull-left">
+                <p class="handwriting">experience custom</p>
+            </div>
+            <div class="nav-collapse collapse">
+                <ul class="nav pull-right">
+                    <li><a href="#location">LOCATION</a></li>
+                    <li><a data-toggle="modal" href="#myModal">SIGN-UP</a></li>
+                    <li><a data-toggle="modal" href="#loginModal">LOGIN</a></li>
+                    <li><a href="#account">MY-ACCOUNT</a></li>
+                    <li><a href="#wishlist">MY-WISHLIST</a></li>
+                    <li><a href="#bag">MY-BAG</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-left">
+                        <li><a href="#fit">BETTER FIT</a></li>
+                        <li><a href="#silouettes">SILOUETTES</a></li>
+                        <li class="active handwriting"><a href="#design">START DESIGNS</a></li>
+                        <li><a href="#about">ABOUT US</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+</div>  <!-- /navbar -->
+
+<!-- starts main body -->
+<div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </div>
+
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; Company 2012</p>
+    </footer>
+
+</div> <!-- /container -->
+<!-- starts footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row info">
+            <div class="span6 residence">
+                <ul>
+                    <li>Flat I, 5 Discovery Bay, Lantau Island</li>
+                    <li>Hong Kong</li>
+                </ul>
+            </div>
+            <div class="span5 touch">
+                <ul>
+                    <li><strong>P.</strong> +852 543987</li>
+                    <li><strong>E.</strong><a href="#"> panic@thecat.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row credits">
+            <div class="span12">
+                <div class="row social">
+                    <div class="span12">
+                        <a href="#" class="facebook">
+                            <span class="socialicons ico1"></span>
+                            <span class="socialicons_h ico1h"></span>
+                        </a>
+                        <a href="#" class="twitter">
+                            <span class="socialicons ico2"></span>
+                            <span class="socialicons_h ico2h"></span>
+                        </a>
+                        <a href="#" class="gplus">
+                            <span class="socialicons ico3"></span>
+                            <span class="socialicons_h ico3h"></span>
+                        </a>
+                        <a href="#" class="flickr">
+                            <span class="socialicons ico4"></span>
+                            <span class="socialicons_h ico4h"></span>
+                        </a>
+                        <a href="#" class="pinterest">
+                            <span class="socialicons ico5"></span>
+                            <span class="socialicons_h ico5h"></span>
+                        </a>
+                        <a href="#" class="dribble">
+                            <span class="socialicons ico6"></span>
+                            <span class="socialicons_h ico6h"></span>
+                        </a>
+                        <a href="#" class="behance">
+                            <span class="socialicons ico7"></span>
+                            <span class="socialicons_h ico7h"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row copyright">
+                    <div class="span12">
+                        © 2013 nostopbutton. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+<!-- TODO Is this the best way to add JQuery UI? How do I support offline dev (e.g. on ferry)? -->
+<!--<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>-->
+<script src="js/vendor/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+
+<!-- TODO - from Canvas-->
+<!--<script src="js/theme.js"></script>-->
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+</body>
+</html>

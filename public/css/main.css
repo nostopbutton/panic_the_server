@@ -1,0 +1,127 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+.dress {
+    position:relative;
+    align: center;
+    left:150px;
+    height: 350px;
+    /*width: 200px;*/
+}
+
+.bodice {
+    z-index:3;
+}
+
+.skirt {
+    z-index:2;
+}
+
+.sleeves {
+    z-index:1;
+}
+
+.belt {
+    z-index:4;
+}
+
+.pic {
+    position:absolute;
+    /*left:100px;*/
+    /*width:200px;*/
+    /*height:350px;*/
+    opacity:1;
+}
+
+.selector.option {
+    /*position:absolute;*/
+    /*left:550px;*/
+    height: 75px;
+    width: 75px;
+    /*background: #92cc64;*/
+}
+
+.selector.view {
+    height: 80px;
+    width: 50px;
+}
+
+.tab-info {
+    font-size: 12px;
+}
+
+.logo {
+    /*font-family: 'Aclonica', sans-serif;*/
+    font-family: 'Krona One', sans-serif;
+    font-size: 30px;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.logo.custom {
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+.teal-headers {
+    font-family: 'Krona One', sans-serif;
+}
+
+.handwriting {
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 16px;
+}
+
+.main-text {
+    font-family: 'Arimo', sans-serif;
+}
+.top-border {
+    border-top-style:solid;
+    border-color:#98bf21;
+    border-width:5px;
+}
+
+.design_radio_option {
+
+}
+
+.design_radio_colour {
+
+}
+
+.design_check_option {
+
+}
+
+.design_check_colour {
+
+}
+
+/*font-family: 'Arimo', sans-serif;*/
+/*font-family: 'La Belle Aurore', cursive;*/
+/*font-family: 'Aclonica', sans-serif;*/
+/*font-family: 'Krona One', sans-serif;*/
+/*font-family: 'Nothing You Could Do', cursive;*/
+/*font-family: 'Arizonia', cursive;*/
+/*font-family: 'Dancing Script', cursive;*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

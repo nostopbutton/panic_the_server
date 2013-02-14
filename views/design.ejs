@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="/css/vendor/bootstrap-responsive.min.css">
+        <!-- TODO -  do I need normalize? -->
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/main.css">
+
+        <!-- Added by me -->
+        <link rel="stylesheet" type="text/css" href="/css/theme.css"><!-- TODO - should extract footer-->
+        <!--<link rel="stylesheet" href="css/design.css" type="text/css" media="screen" />-->
+        <!-- JQuery UI used to create radio buttons-->
+        <link rel="stylesheet" href="/css/vendor/smoothness/jquery-ui-1.10.0.custom.min.css">
+
+        <link href='http://fonts.googleapis.com/css?family=Arimo|La+Belle+Aurore|Aclonica|Krona+One|Nothing+You+Could+Do|Arizonia|Dancing+Script' rel='stylesheet' type='text/css'>
+
+        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="myModal" class="modal hide fade smallModal">
+            <form id="signup-form" action="/signup" method="post" class="form-horizontal">
+                <div class="modal-header"><a data-dismiss="modal"  class="close"></a>
+                    <h3>Sign Up Today</h3></div>
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="control-group">
+                            <input type="text" name="username" placeholder="Username" class="input-xlarge uname"/>
+                            <!--<span id="imagePlaceHolder"></span>-->
+                        </div>
+                        <div class="control-group">
+                            <input type="text" name="email" placeholder="Email" class="input-xlarge"/>
+                        </div>
+                        <div class="control-group">
+                            <input type="password" name="password" placeholder="Password" class="input-xlarge"/>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn">Close</a>
+                    <button class="btn btn-primary create-button" type="submit">Create Account</button>
+                </div>
+            </form>
+        </div>
+        <div id="loginModal" class="modal hide fade smallModal">
+            <form id="login-form" action="/login" method="post" class="form-horizontal">
+                <div class="modal-header">
+                    <a data-dismiss="modal" class="close"></a>
+                    <h3>Log In</h3>
+                </div>
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="control-group">
+                            <input type="text" name="username" placeholder="Username" class="input-xlarge uname"/>
+                            <!--<span id="imagePlaceHolder"></span>-->
+                        </div>
+                        <div class="control-group">
+                            <input type="password" name="password" placeholder="Password" class="input-xlarge"/>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                    <button class="btn btn-primary" type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+        <div id="resetModal" class="modal hide fade smallModal">
+            <form id="reset-form" action="/design" method="post" class="form-horizontal">
+                <div class="modal-header">
+                    <a data-dismiss="modal" class="close"></a>
+                    <h3>RESET</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to throw away your design?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn">Oops, no. Take me back!</a>
+                    <button class="btn btn-primary" type="submit">Yes, chuck it away please.</button>
+                </div>
+            </form>
+        </div>
+        <div id="reviewModal" class="modal hide fade smallModal">
+            <form id="review-form" action="/review" method="post" class="form-horizontal">
+                <div class="modal-header">
+                    <a data-dismiss="modal" class="close"></a>
+                    <h3>Review my design</h3>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>bodice</li>
+                        <li>skirt</li>
+                        <li>sleeve</li>
+                        <li>belt</li>
+                        <li>extras</li>
+                        <li>sizing</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                    <button class="btn btn-primary" type="submit">Add to bag &raquo;</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class= "container">
+                    <div class="pull-left">
+                        <a class="logo" href="#">TEAL</a>
+                        <!--<p class="logo">TEAL</p>-->
+                    </div>
+                    <div class="pull-left">
+                        <p class="handwriting">experience custom</p>
+                    </div>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li><a href="#location">LOCATION</a></li>
+                            <li><a data-toggle="modal" href="#myModal">SIGN-UP</a></li>
+                            <li><a data-toggle="modal" href="#loginModal">LOGIN</a></li>
+                            <li><a href="#account">MY-ACCOUNT</a></li>
+                            <li><a href="#wishlist">MY-WISHLIST</a></li>
+                            <li><a href="#bag">MY-BAG</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-left">
+                                <li><a href="#fit">BETTER FIT</a></li>
+                                <li><a href="#silouettes">SILOUETTES</a></li>
+                                <li class="active handwriting"><a href="#design">START DESIGNS</a></li>
+                                <li><a href="#about">ABOUT US</a></li>
+                                <li><a href="#contact">CONTACT</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container"> <br><br>
+            <div class="row">
+                <div class="span3 offset6">
+                    CLASSIC COCO RANGE
+                </div>
+                <div class="span1 pull-right">
+                    <b>HKD 1,600</b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 offset6">
+                    <p class="handwriting top-border"><i>use the buttons below to customise your dress</i></p>
+                </div>
+            </div>
+
+        <!--</div>-->
+        <!--<div class="container">-->
+            <div class="row">
+                <div> <!--id="portfolio_tem">-->
+                    <div class="span1"> <!-- left_box">-->
+                        <!--<div class="section_header">-->
+                            <!--<h4>Views</h4>-->
+                        <!--</div>-->
+                        <!--<div class="thumbs">-->
+                            <!--<div class="thumb">-->
+                                <!--<img src="img/2.2-DressView1.png" class="selector view">-->
+                                <!--&lt;!&ndash;<a href="#" class="mask">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<small>Front</small>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="more">+</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                            <!--</div>-->
+                            <!--<div class="thumb">-->
+                                <!--<img src="img/2.2-DressView1.png" class="selector view">-->
+                                <!--&lt;!&ndash;<a href="#" class="mask">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<small>Back</small>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="more">+</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                            <!--</div>-->
+                            <!--<div class="thumb">-->
+                                <!--<img src="img/2.2-DressView1.png" class="selector view">-->
+                                <!--&lt;!&ndash;<a href="#" class="mask">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<small>Side</small>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="more">+</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <fieldset name="view_choice" form="selection_form">
+                            <!--<legend>Choose bodice type:</legend>-->
+                            <input type="radio" name="view" id="view-front" value="view-front">
+                            <label for="view-front"><img src="img/2.2-DressView1.png" class="selector view"><br>Front</label>
+                            <input type="radio" name="view" id="view-side" value="view-side">
+                            <label for="view-side"><img src="img/2.2-DressView1.png" class="selector view"><br>Side</label>
+                            <input type="radio" name="view" id="view-back" value="view-back">
+                            <label for="view-back"><img src="img/2.2-DressView1.png" class="selector view"><br>Back</label>
+                        </fieldset>
+                        <br><br><br> <!-- TODO - remove this and do the vertical spacing properly -->
+                    </div>
+                    <div class="span3"> <!-- left_box">-->
+                        <div class="dress">
+                            <div class="bodice"></div>
+                            <div class="skirt"></div>
+                            <div class="sleeves"></div>
+                            <div class="belt"></div>
+                        </div>
+                    </div>
+
+                    <div class="span6 offset2">
+                        <form id="selection_form"/>
+                        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+                            <ul class="nav nav-tabs">
+                                <!--<li class="active"><a href="#tab-silouette" data-toggle="tab">silouette</a></li>-->
+                                <!--<li><a href="#tab-fabric" data-toggle="tab">fabric</a></li>-->
+                                <li class="active"><a href="#tab-bodice" data-toggle="tab">bodice</a></li>
+                                <li><a href="#tab-skirt" data-toggle="tab">skirt</a></li>
+                                <li><a href="#tab-sleeve" data-toggle="tab">sleeve</a></li>
+                                <li><a href="#tab-belt" data-toggle="tab">belt</a></li>
+                                <li><a href="#tab-extras" data-toggle="tab">extras</a></li>
+                                <li><a href="#tab-sizing" data-toggle="tab">sizing</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab-bodice">
+                                    <div class="span3">
+                                        <fieldset name="bodice_choice" form="selection_form">
+                                            <!--<legend>Choose bodice type:</legend>-->
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-01" value="bodice-01" disabled="disabled">
+                                            <label for="bodice-01"><img src="img/2.3-bodice-01.png" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-02" value="bodice-02">
+                                            <label for="bodice-02"><img src="img/2.3-bodice-02.png" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-03" value="bodice-03">
+                                            <label for="bodice-03"><img src="img/2.3-bodice-03.png" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-04" value="bodice-04">
+                                            <label for="bodice-04"><img src="img/2.3-bodice-04.png" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-05" value="bodice-05">
+                                            <label for="bodice-05"><img src="img/2.3-bodice-05.png" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-06" value="bodice-06">
+                                            <label for="bodice-06"><img src="img/2.3-bodice-06.png" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-07" value="bodice-07" disabled="disabled">
+                                            <label for="bodice-07"><img src="img/2.3-bodice-07.png" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="bodice" id="bodice-08" value="bodice-08" disabled="disabled">
+                                            <label for="bodice-08"><img src="img/2.3-bodice-08.png" class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                    <div class="span1">
+                                        <fieldset name="bodice_colour_choice" form="selection_form">
+                                            <input type="radio" class="design_radio_colour" name="bodice-colour" id="bodice-colour-01" value="c01" checked>
+                                            <label for="bodice-colour-01"><img style="background:#ff0000;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="bodice-colour" id="bodice-colour-02" value="c02">
+                                            <label for="bodice-colour-02"><img style="background:#000099;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="bodice-colour" id="bodice-colour-03" value="c03">
+                                            <label for="bodice-colour-03"><img style="background:#191919;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="bodice-colour" id="bodice-colour-04" value="c04">
+                                            <label for="bodice-colour-04"><img style="background:#005200;"  class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-skirt">
+                                    <div class="span3">
+                                        <fieldset name="skirt_choice" form="selection_form">
+                                            <!--<legend>Choose skirt type:</legend>-->
+                                            <input type="radio" class="design_radio_option" name="skirt" id="skirt-01" value="skirt-01">
+                                            <label for="skirt-01"><img src="img/2.3-skirt-01.png" alt="pencil short" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="skirt" id="skirt-02" value="skirt-02">
+                                            <label for="skirt-02"><img src="img/2.3-skirt-02.png" alt="pencil knee" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="skirt" id="skirt-03" value="skirt-03">
+                                            <label for="skirt-03"><img src="img/2.3-skirt-03.png" alt="pencil long" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="skirt" id="skirt-04" value="skirt-04">
+                                            <label for="skirt-04"><img src="img/2.3-skirt-04.png" alt="audrey short" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="skirt" id="skirt-05" value="skirt-05">
+                                            <label for="skirt-05"><img src="img/2.3-skirt-05.png" alt="audrey" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="skirt" id="skirt-06" value="skirt-06" disabled="disabled">
+                                            <label for="skirt-06"><img src="img/2.3-skirt-06.png" alt="?" class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                    <div class="span1">
+                                        <fieldset name="skirt_colour_choice" form="selection_form">
+                                            <input type="radio" class="design_radio_colour" name="skirt-colour" id="skirt-colour-01" value="c01" checked>
+                                            <label for="skirt-colour-01"><img style="background:#ff0000;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="skirt-colour" id="skirt-colour-02" value="c02">
+                                            <label for="skirt-colour-02"><img style="background:#000099;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="skirt-colour" id="skirt-colour-03" value="c03">
+                                            <label for="skirt-colour-03"><img style="background:#191919;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="skirt-colour" id="skirt-colour-04" value="c04">
+                                            <label for="skirt-colour-04"><img style="background:#005200;"  class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-sleeve">
+                                    <div class="span3">
+                                        <fieldset name="sleeves_choice" form="selection_form">
+                                            <!--<legend>Choose sleeves type:</legend>-->
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-00" value="sleeves-00">
+                                            <label for="sleeves-00"><img src="img/2.3-sleeves-00.png" alt="none" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-01" value="sleeves-01">
+                                            <label for="sleeves-01"><img src="img/2.3-sleeves-01.png" alt="short cap" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-02" value="sleeves-02">
+                                            <label for="sleeves-02"><img src="img/2.3-sleeves-02.png" alt="long cap" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-03" value="sleeves-03">
+                                            <label for="sleeves-03"><img src="img/2.3-sleeves-03.png" alt="short" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-04" value="sleeves-04">
+                                            <label for="sleeves-04"><img src="img/2.3-sleeves-04.png" alt="three quarters" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-05" value="sleeves-05">
+                                            <label for="sleeves-05"><img src="img/2.3-sleeves-05.png" alt="long" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-06" value="sleeves-06">
+                                            <label for="sleeves-06"><img src="img/2.3-sleeves-06.png" alt="cuff" class="selector option"></label>
+                                            <input type="radio" class="design_radio_option" name="sleeves" id="sleeves-07" value="sleeves-07">
+                                            <label for="sleeves-07"><img src="img/2.3-sleeves-07.png" alt="bell" class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                    <div class="span1">
+                                        <fieldset name="sleeves" form="selection_form">
+                                            <input type="radio" class="design_radio_colour" name="sleeves-colour" id="sleeves-colour-01" value="c01" checked>
+                                            <label for="sleeves-colour-01"><img style="background:#ff0000;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="sleeves-colour" id="sleeves-colour-02" value="c02">
+                                            <label for="sleeves-colour-02"><img style="background:#000099;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="sleeves-colour" id="sleeves-colour-03" value="c03">
+                                            <label for="sleeves-colour-03"><img style="background:#191919;"  class="selector option"></label>
+                                            <input type="radio" class="design_radio_colour" name="sleeves-colour" id="sleeves-colour-04" value="c04">
+                                            <label for="sleeves-colour-04"><img style="background:#005200;"  class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-belt">
+                                    <div class="span3">
+                                        <fieldset name="belt_choice" form="selection_form">
+                                            <!--<legend>Choose belt:</legend>-->
+                                            <input type="checkbox" class="design_check_option" name="belt" id="belt-01" value="belt-01">
+                                            <label for="belt-01"><img src="img/2.3-belt-01.png" class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                    <div class="span1">
+                                        <fieldset name="belt" form="selection_form">
+                                            <input type="radio" class="design_check_colour" name="belt-colour" id="belt-colour-01" value="c01" checked>
+                                            <label for="belt-colour-01"><img style="background:#ff0000;"  class="selector option"></label>
+                                            <input type="radio" class="design_check_colour"name="belt-colour" id="belt-colour-02" value="c02">
+                                            <label for="belt-colour-02"><img style="background:#000099;"  class="selector option"></label>
+                                            <input type="radio" class="design_check_colour"name="belt-colour" id="belt-colour-03" value="c03">
+                                            <label for="belt-colour-03"><img style="background:#191919;"  class="selector option"></label>
+                                            <input type="radio" class="design_check_colour"name="belt-colour" id="belt-colour-04" value="c04">
+                                            <label for="belt-colour-04"><img style="background:#005200;"  class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-extras">
+                                    <div class="span3">
+                                        <fieldset name="trim_choice" form="selection_form">
+                                            <!--<legend>Choose trims:</legend>-->
+                                            <input type="checkbox" name="trim" id="trim-01" value="trim-01">
+                                            <label for="trim-01"><img src="img/2.3-trim-01.png" class="selector option"></label>
+                                            <input type="checkbox" name="trim" id="trim-02" value="trim-02">
+                                            <label for="trim-02"><img src="img/2.3-trim-02.png" class="selector option"></label>
+                                            <input type="checkbox" name="trim" id="trim-03" value="trim-03">
+                                            <label for="trim-03"><img src="img/2.3-trim-03.png" class="selector option"></label>
+                                            <input type="checkbox" name="trim" id="trim-04" value="trim-04">
+                                            <label for="trim-04"><img src="img/2.3-trim-04.png" class="selector option"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab-sizing">
+                                    <div class="btn-group" data-toggle="buttons-checkbox">
+                                        <legend>Choose a standard size:</legend>
+                                        <select>
+                                            <option>Size 0</option>
+                                            <option>Size 1</option>
+                                            <option>Size 2</option>
+                                            <option>Size 3</option>
+                                            <option>Size 4</option>
+                                            <option>Size 5</option>
+                                            <option>Size 6</option>
+                                            <option>Size 7</option>
+                                            <option>Size 8</option>
+                                            <option>Size 9</option>
+                                            <option>Size 10</option>
+                                            <option>Size 11</option>
+                                            <option>Size 12</option>
+                                            <option>Size 13</option>
+                                            <option>Size 14</option>
+                                            <option>Size 15</option>
+                                            <option>Size 16</option>
+                                        </select>
+                                        <legend>or custom measurements:</legend>
+                                        todo - how do we enter these details?
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 offset6">
+                    <p>
+                        <a class="btn" data-toggle="modal" href="#reviewModal">Review my choices</a>
+                        <a class="btn" data-toggle="modal" href="#resetModal">Reset</a>
+                        <a class="btn" href="#">Add to bag &raquo;</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span3 offset2">
+                    <!--<div class="section_header">-->
+                        <!--<h3>Cross Seller</h3>-->
+                    <!--</div>-->
+                    <div align="center">
+                    <p>You may also like</p>
+                    </div>
+
+                    <div align="center">
+                        <ul class="thumbnails">
+                            <li class="span1">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://placehold.it/100x100" alt="">
+                                </a>
+                            </li>
+                            <li class="span1">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://placehold.it/101x100" alt="">
+                                </a>
+                            </li>
+                            <li class="span1">
+                                <a href="#" class="thumbnail">
+                                    <img src="http://placehold.it/102x100" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                 </div>
+
+                <div class="span5 offset1">
+                    <!--<div class="section_header">-->
+                        <!--<h3>Info</h3>-->
+                    <!--</div>-->
+
+                    <div class="tabbable"> <!-- Only required for left/right tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab-info-needtoknow" data-toggle="tab" class="tab-info">NEED TO KNOW</a></li>
+                            <li><a href="#tab-info-care" data-toggle="tab" class="tab-info">ITEM DETAILS & CARE</a></li>
+                            <li><a href="#tab-info-shipping" data-toggle="tab" class="tab-info">SHIPPING & RETURNS</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab-info-needtoknow">
+                                Richard Nicoll's signature attention to detail reigns supreme wiht this stunning fluro jacuard dress. Featuring contrasting graphic panels wihtin clean, minimal lines, this statement piece fuses directional design wiht timeless simplicity.
+                            </div>
+                            <div class="tab-pane" id="tab-info-care">
+                                <img alt="" src="http://placehold.it/100x100">
+                            </div>
+                            <div class="tab-pane" id="tab-info-shipping">
+                                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+        <!-- starts footer -->
+        <footer id="footer">
+            <div class="container">
+                <div class="row info">
+                    <div class="span6 residence">
+                        <ul>
+                            <li>Flat I, 5 Discovery Bay, Lantau Island</li>
+                            <li>Hong Kong</li>
+                        </ul>
+                    </div>
+                    <div class="span5 touch">
+                        <ul>
+                            <li><strong>P.</strong> +852 543987</li>
+                            <li><strong>E.</strong><a href="#"> panic@thecat.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row credits">
+                    <div class="span12">
+                        <div class="row social">
+                            <div class="span12">
+                                <a href="#" class="facebook">
+                                    <span class="socialicons ico1"></span>
+                                    <span class="socialicons_h ico1h"></span>
+                                </a>
+                                <a href="#" class="twitter">
+                                    <span class="socialicons ico2"></span>
+                                    <span class="socialicons_h ico2h"></span>
+                                </a>
+                                <a href="#" class="gplus">
+                                    <span class="socialicons ico3"></span>
+                                    <span class="socialicons_h ico3h"></span>
+                                </a>
+                                <a href="#" class="flickr">
+                                    <span class="socialicons ico4"></span>
+                                    <span class="socialicons_h ico4h"></span>
+                                </a>
+                                <a href="#" class="pinterest">
+                                    <span class="socialicons ico5"></span>
+                                    <span class="socialicons_h ico5h"></span>
+                                </a>
+                                <a href="#" class="dribble">
+                                    <span class="socialicons ico6"></span>
+                                    <span class="socialicons_h ico6h"></span>
+                                </a>
+                                <a href="#" class="behance">
+                                    <span class="socialicons ico7"></span>
+                                    <span class="socialicons_h ico7h"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row copyright">
+                            <div class="span12">
+                                © 2013 nostopbutton. All rights reserved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+        <!-- TODO Is this the best way to add JQuery UI? How do I support offline dev (e.g. on ferry)? -->
+        <!--<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>-->
+        <script src="/js/vendor/jquery-ui-1.10.0.custom.min.js"></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+
+        <!-- TODO - from Canvas-->
+        <!--<script src="js/theme.js"></script>-->
+
+        <script src="/js/plugins.js"></script>
+        <script src="/js/main.js"></script>
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    </body>
+</html>
